@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ISO from 'api/ISO'
 
 export default class UserCard extends Component {
+	
+	onRemoveUser() {
+		this.props.onRemoveUser(this.props.user);
+	}
 
 	render() {
 		const { name, gender, photo, region, email, age } = this.props.user; //es6 destructuring
@@ -22,7 +26,7 @@ export default class UserCard extends Component {
 							<span className={flagClassName}> </span>
 						</small>
 					</p>
-					<i className='fa fa-remove fa-2x float-right hvr-grow'></i>
+					<i className='fa fa-remove fa-2x float-right hvr-grow' onClick = {::this.onRemoveUser}></i>
 				</div>
 			</div >;
 		return card
