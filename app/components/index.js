@@ -11,7 +11,8 @@ export default class MainComponent extends Component {
 
 		this.state = {
 			eventName: 'Birthday Party',
-			users: []
+			users: [],
+			isFormVisible: false
 		};
 	}
 
@@ -25,11 +26,17 @@ export default class MainComponent extends Component {
 			})
 		})
 	}
-	
+
 	removeUser(user) {
 		const users = without(this.state.users, user);
 		this.setState({
 			users
+		});
+	}
+
+	toggleFormVisibility() {
+		this.setState({
+			isFormVisible: !this.state.isFormVisible
 		});
 	}
 
@@ -40,7 +47,10 @@ export default class MainComponent extends Component {
 			<div>
 				<div className="row mb-3">
 				 	<div className="col-lg-12">
-						<AddUserForm /> 
+						<AddUserForm
+							handleToggleFormVisibility = { ::this.toggleFormVisibility }
+							isFormVisible = { this.state.isFormVisible }
+						/>
 					</div>
 				</div>
 				<div>
@@ -51,11 +61,11 @@ export default class MainComponent extends Component {
 				<div className="row">
 					<div className="col-lg-12">
 						<div className="card-columns">
-							<UserCardList 
+							<UserCardList
 							users = { currentUsers }
 							handleRemoveUser = { ::this.removeUser } //es7 syntax
 							// handleRemoveUser = { this.removeUser.bind(this) } //since UserCardList won't have the scope of this,
-																			 // we pass the scope of this with .bind(this)								
+																			 // we pass the scope of this with .bind(this)
 							/>
 						</div>
 					</div>

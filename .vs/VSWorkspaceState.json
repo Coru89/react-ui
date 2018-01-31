@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\api"
+    "\\app\\api",
+    "\\app\\components",
+    "\\app\\vendor"
   ],
   "PreviewInSolutionExplorer": false
 }
